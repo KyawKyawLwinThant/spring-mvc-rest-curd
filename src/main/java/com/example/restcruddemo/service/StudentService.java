@@ -8,4 +8,10 @@ public interface StudentService {
     Student create(Student student);
     Student findById(int id);
     List<Student> findAll();
+    void removeStudent(int id);
+    void update(Student student,int existingStudentId);
+    void changeSchool(int studentId,String school);
+
+
+
 }

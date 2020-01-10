@@ -40,10 +40,28 @@ public class StudentController {
         return studentService.findById(id);
     }
 
+
     @PostMapping(value ="/all",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createStudent(@RequestBody Student student){
         studentService.create(student);
         return new ResponseEntity<String>("success",HttpStatus.CREATED);
+    }
+    @DeleteMapping("/all/{id}")
+    public String removeStudnet(@PathVariable int id){
+        studentService.removeStudent(id);
+        return "successfully removed.";
+    }
+    @PutMapping("/all/{id}")
+    public String updateStudent(@RequestBody Student student
+            ,@PathVariable int id){
+        studentService.update(student,id);
+
+        return "successfully updated.";
+    }
+    @PatchMapping("/all/{id}")
+    public String changeSchool(@PathVariable int id,@RequestBody String school){
+        studentService.changeSchool(id,school);
+        return "successfully changed school.";
     }
 
 
